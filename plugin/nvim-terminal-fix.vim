@@ -16,8 +16,6 @@ set cpo&vim
 " Terminal more appealing
 function! NEOterm_better() abort
   silent execute "terminal"
-  augroup term_better
-    autocmd!
     autocmd TermOpen * setlocal nonumber norelativenumber
     autocmd TermOpen * if &buftype ==# 'terminal' | resize 10 | startinsert | endif
     autocmd BufLeave term://* stopinsert
@@ -25,7 +23,6 @@ function! NEOterm_better() abort
       \ if (expand('<afile>') !~ "fzf") && (expand('<afile>') !~ "ranger") && (expand('<afile>') !~ "coc") |
       \   call nvim_input('<CR>')  |
       \ endif
-  augroup END
 endfunction
 
 " map T to open a terminal window on the botton of the screen since we have splitbelow on
