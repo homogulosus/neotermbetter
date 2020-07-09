@@ -8,7 +8,7 @@ set cpo&vim
 
 " map T to open a terminal window on the botton of the screen since we have splitbelow on
 command! Terminal call nterm#nterm_better()
-nmap <silent><leader>T :new +Terminal<CR>
+nmap <silent><leader>T :term<CR>
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
