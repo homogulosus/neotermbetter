@@ -6,24 +6,9 @@ let g:loaded_ntermfix = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-" FIXME autocmd and resize are trigered also with the normal termianl command.
-" Solution: probably making it a plugin and saving cpo
-" Terminal more appealing
-function! s:nterm_better() abort
-  augroup term_better
-    autocmd!
-    autocmd TermOpen * setlocal nonumber norelativenumber
-    autocmd TermOpen * if &buftype ==# 'terminal' | resize 10 | startinsert | endif
-    autocmd BufLeave term://* stopinsert
-    autocmd TermClose term://*
-      \ if (expand('<afile>') !~ "fzf") && (expand('<afile>') !~ "ranger") && (expand('<afile>') !~ "coc") |
-      \   call nvim_input('<CR>')  |
-      \ endif
-  augroup END
-endfunction
-
 " map T to open a terminal window on the botton of the screen since we have splitbelow on
-nmap <silent><leader>T :sp +terminal<CR>
+command! Terminal call nterm#nterm_better()
+nmap <silent><leader>T :new +Terminal<CR>
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
