@@ -1,4 +1,4 @@
-if exist('g:ntermfix')
+if exists('g:ntermfix')
   finish
 endif
 let g:ntermfix = 1
