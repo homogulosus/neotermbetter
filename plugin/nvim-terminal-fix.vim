@@ -9,7 +9,7 @@ set cpo&vim
 " FIXME autocmd and resize are trigered also with the normal termianl command.
 " Solution: probably making it a plugin and saving cpo
 " Terminal more appealing
-function! s:nTermFix() abort
+function! g:nTermFix() abort
   autocmd indispensable TermOpen * setlocal nonumber norelativenumber
   " wind resizing
   augroup term_settings | autocmd!
