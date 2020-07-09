@@ -14,7 +14,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 " Terminal more appealing
-function! s:nterm_better() abort
+function! NEOterm_better() abort
   silent execute "terminal"
   augroup term_better
     autocmd!
@@ -29,7 +29,7 @@ function! s:nterm_better() abort
 endfunction
 
 " map T to open a terminal window on the botton of the screen since we have splitbelow on
-command! Terminal call s:nterm_better()
+command! Terminal call NEOterm_better()
 nmap <silent><leader>T :new<CR>:Terminal<CR>
 
 let &cpo = s:save_cpo
