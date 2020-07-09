@@ -1,7 +1,7 @@
-if exists('g:ntermfix')
+if exists('g:loaded_ntermfix') && !has('nvim')
   finish
 endif
-let g:ntermfix = 1
+let g:loaded_ntermfix = 1
 
 let s:save_cpo = &cpo
 set cpo&vim
@@ -9,7 +9,6 @@ set cpo&vim
 " FIXME autocmd and resize are trigered also with the normal termianl command.
 " Solution: probably making it a plugin and saving cpo
 " Terminal more appealing
-if has('nvim')
   autocmd indispensable TermOpen * setlocal nonumber norelativenumber
   " wind resizing
   augroup term_settings | autocmd!
@@ -20,7 +19,6 @@ if has('nvim')
       \   call nvim_input('<CR>')  |
       \ endif
   augroup END
-endif
 
 " map T to open a terminal window on the botton of the screen since we have splitbelow on
 nmap <silent><leader>T :sp +terminal<CR>
