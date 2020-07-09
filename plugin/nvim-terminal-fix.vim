@@ -9,7 +9,7 @@ set cpo&vim
 " FIXME autocmd and resize are trigered also with the normal termianl command.
 " Solution: probably making it a plugin and saving cpo
 " Terminal more appealing
-function! g:nTermFix() abort
+function! g:NTermFix() abort
   autocmd indispensable TermOpen * setlocal nonumber norelativenumber
   " wind resizing
   augroup term_settings | autocmd!
@@ -21,6 +21,7 @@ function! g:nTermFix() abort
       \ endif
   augroup END
 endfunction
+
 " map T to open a terminal window on the botton of the screen since we have splitbelow on
 nmap <silent><leader>T :sp +terminal<CR>
 
