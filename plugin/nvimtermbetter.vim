@@ -13,16 +13,20 @@ let g:loaded_ntermfix = 1
 let s:save_cpo = &cpo
 set cpo&vim
 
-" Terminal more appealing
-function! NEOterm_better() abort
-  silent execute "terminal"
+augroup BetterTerm
+  autocmd!
     autocmd TermOpen * setlocal nonumber norelativenumber
-    autocmd TermOpen * if &buftype ==# 'terminal' | resize 10 | startinsert | endif
+    autocmd TermOpen * if &buftype ==# 'terminal' | startinsert | endif
     autocmd BufLeave term://* stopinsert
     autocmd TermClose term://*
       \ if (expand('<afile>') !~ "fzf") && (expand('<afile>') !~ "ranger") && (expand('<afile>') !~ "coc") |
       \   call nvim_input('<CR>')  |
       \ endif
+augroup END
+
+function! NEOterm_better() abort
+  silent execute "terminal"
+  resize 10
 endfunction
 
 " map T to open a terminal window on the botton of the screen since we have splitbelow on
