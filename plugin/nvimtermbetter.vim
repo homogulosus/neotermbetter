@@ -25,13 +25,14 @@ augroup BetterTerm
 augroup END
 
 function! NEOterm_better() abort
-  silent execute "terminal"
+  silent! execute "wincmd n"
+  silent! execute "terminal"
   resize 10
 endfunction
 
 " map T to open a terminal window on the botton of the screen since we have splitbelow on
 command! Terminal call NEOterm_better()
-nmap <silent><leader>T :new<CR>:Terminal<CR>
+nmap <silent><leader>T  :Terminal<CR>
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
